@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS repertorio;
+
+CREATE DATABASE repertorio;
