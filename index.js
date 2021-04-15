@@ -3,12 +3,13 @@ const fs = require('fs')
 const url = require('url')
 const db = require('./db')
 
+
 const server = http.createServer(async (req, res) => {
   if (req.url == '/' && req.method == 'GET') {
-    fs.readFile('./views/index.html', (err, file) => {
+    fs.readFile('index.html', (err, file) => {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.write(file, 'utf8')
-      res.end()
+      res.end(html)
     })
   }
 
