@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 
 const config = {
-    users: 'cata',
-    password: '1234',
-    host: 'localhost',
-    database: 'repertorio',
+    users: 'mgvyhdip',
+    password: '5664PKj4TgCsYhe88QL2_LpFVjzxXAvo',
+    host: 'motty.db.elephantsql.com',
+    database: 'mgvyhdip',
     port: 5432
 }
 
