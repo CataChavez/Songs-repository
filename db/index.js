@@ -1,5 +1,8 @@
 const { Pool } = require('pg');
-require("dotenv").config()
+
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
 
 const pool = new Pool({
     user: process.env.DB_USER,
@@ -7,11 +10,15 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
+    connectionString: process.env.DATABASE_URL,
+
 })
+
+pool.connect()
 
 async function createSong(paramsArray){
     const qryObj = {
-        text: 'INSERT INTO repertorio(cancion, artista, tono) VALUES ($1, $2, $3)',
+        text: 'INSERT INTO repertorio (cancion, artista, tono) VALUES ($1, $2, $3)',
         values: paramsArray
     }
 

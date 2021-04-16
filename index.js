@@ -5,6 +5,7 @@ const url = require('url')
 const db = require('./db/index')
 const PORT = process.env.PORT || 5000
 
+
 //Server
 const server = http.createServer(async (req, res) => {
   //Routes
@@ -64,3 +65,5 @@ const server = http.createServer(async (req, res) => {
 })
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+console.log(process.env)
