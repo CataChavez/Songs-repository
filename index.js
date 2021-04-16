@@ -60,4 +60,4 @@ const server = http.createServer(async (req, res) => {
 
 })
 
-.listen(PORT)
+.listen(PORT, () => console.log(`Listening on ${ PORT }`))
