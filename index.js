@@ -1,11 +1,14 @@
+//Imports
 const http = require('http')
 const fs = require('fs')
 const url = require('url')
-const db = require('./db')
+const db = require('./db/index')
 const PORT = process.env.PORT || 5000
 
-
+//Server
 const server = http.createServer(async (req, res) => {
+  //Routes
+  //Home
   if (req.url == '/' && req.method == 'GET') {
     fs.readFile('index.html', (err, file) => {
       res.writeHead(200, { 'Content-Type': 'text/html' })
@@ -13,7 +16,7 @@ const server = http.createServer(async (req, res) => {
       res.end()
     })
   }
-
+  
   if (req.url == '/cancion' && req.method == 'POST') {
     let params = null;
     req.on('data', body => {

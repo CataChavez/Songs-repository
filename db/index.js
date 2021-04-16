@@ -1,14 +1,13 @@
 const { Pool } = require('pg');
+require("dotenv").config()
 
-const config = {
-    users: 'mgvyhdip',
-    password: '5664PKj4TgCsYhe88QL2_LpFVjzxXAvo',
-    host: 'motty.db.elephantsql.com',
-    database: 'mgvyhdip',
-    port: 5432
-}
-
-const pool = new Pool(config);
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
+})
 
 async function createSong(paramsArray){
     const qryObj = {
