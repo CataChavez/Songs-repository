@@ -2,6 +2,7 @@ const http = require('http')
 const fs = require('fs')
 const url = require('url')
 const db = require('./db')
+const PORT = process.env.PORT || 5000
 
 
 const server = http.createServer(async (req, res) => {
@@ -59,4 +60,4 @@ const server = http.createServer(async (req, res) => {
 
 })
 
-server.listen(3000, () => console.log('Listening PORT:3000'))
+.listen(PORT)
