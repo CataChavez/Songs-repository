@@ -1,10 +1,9 @@
 {
   "name": "repertorio",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +15,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CataChavez/Songs-repository.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CataChavez/Songs-repository/issues"
+  },
+  "homepage": "https://github.com/CataChavez/Songs-repository#readme",
+  "description": ""
 }

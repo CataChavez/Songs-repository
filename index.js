@@ -9,7 +9,7 @@ const server = http.createServer(async (req, res) => {
     fs.readFile('index.html', (err, file) => {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.write(file, 'utf8')
-      res.end(html)
+      res.end()
     })
   }
 
@@ -59,4 +59,4 @@ const server = http.createServer(async (req, res) => {
 
 })
 
-server.listen(3000, () => console.log('escuchando en puerto 3000'))
+server.listen(3000, () => console.log('Listening PORT:3000'))
