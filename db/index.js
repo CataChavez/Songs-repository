@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
   }
 
-const pool = new Pool({
+const client  = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
     password: process.env.DB_PASSWORD,
@@ -14,21 +14,30 @@ const pool = new Pool({
 
 })
 
-pool.connect()
+client.connect()
 
 async function createSong(paramsArray){
     const qryObj = {
         text: 'INSERT INTO repertorio (cancion, artista, tono) VALUES ($1, $2, $3)',
         values: paramsArray
-    }
-
-    const result = await pool.query(qryObj);
-    return result;
+    }        
+    try {
+        const result = await pool.query(qryObj);
+        return result;
+    } catch (error) {
+        console.log(error)
+        return error;
+    }    
 }
 
 async function getSong(){
-    const result = await pool.query('SELECT * FROM repertorio');
-    return result;
+    try {
+        const result = await pool.query('SELECT * FROM repertorio');
+        return result;
+    } catch (error) {
+        console.log(error)
+        return error;
+    }   
 }
 
 async function updateSong(paramsArray){
@@ -36,13 +45,23 @@ async function updateSong(paramsArray){
         text: "UPDATE repertorio SET cancion = $2, artista = $3, tono = $4 WHERE id = $1 RETURNING *",
         values: paramsArray
     }
-    const result = await pool.query(qryObj);
-    return result;
+    try {
+        const result = await pool.query(qryObj);
+        return result;
+    } catch (error) {
+        console.log(error)
+        return error;
+    }   
 }
 
 async function eliminateSong(id){
     const result = await pool.query('DELETE FROM repertorio WHERE id = $1 RETURNING *');
-    return result;    
+    try {
+        return result;    
+    } catch (error) {
+        console.log(error)
+        return error;
+    }
 }
 
 module.exports = {
